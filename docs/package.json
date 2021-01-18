@@ -1,0 +1,19 @@
+{
+  "name": "pistonapi-docs",
+  "version": "0.0.1",
+  "description": "Documentation site for PistonAPI",
+  "main": "index.js",
+  "authors": {
+    "name": "Thierri Oliveira",
+    "email": "thierri.oliveira@gmail.com"
+  },
+  "repository": "https://github.com/pistonapi/pistonapi-docs/pistonapi-docs",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
