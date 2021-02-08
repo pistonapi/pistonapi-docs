@@ -9,7 +9,13 @@ module.exports = {
      * Ref：https://v1.vuepress.vuejs.org/config/#description
      */
     description: description,
-
+    
+    postcss: {
+        plugins: [
+            require("tailwindcss")("./tailwind.config.js"),
+            require("autoprefixer"),
+        ],
+    },
     /**
      * Extra tags to be injected to the page HTML `<head>`
      *
