@@ -6,16 +6,15 @@
 
     <div
       v-if="data.features && data.features.length"
-      class="features"
+      class="grid grid-cols-3 gap-4 my-10"
     >
-      <div
+      <ArticleThumb
         v-for="(feature, index) in data.features"
+        :title="feature.title"
+        :details="feature.details"
+        :icon="feature.icon"
         :key="index"
-        class="feature"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
-      </div>
+      />
     </div>
 
     <Content class="theme-default-content custom" />
@@ -30,10 +29,11 @@
 </template>
 
 <script>
+import ArticleThumb from './widgets/ArticleThumb.vue'
 import NavLink from '@theme/components/NavLink.vue'
 export default {
   name: 'Home',
-  components: { NavLink },
+  components: { NavLink, ArticleThumb },
   computed: {
     data () {
       return this.$page.frontmatter
