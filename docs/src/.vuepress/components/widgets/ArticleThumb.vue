@@ -1,9 +1,11 @@
 <template>
   <div
-    class="bg-gradient-to-br from-indigo-400 to-indigo-500 p-10 rounded-lg text-white"
+  :class="` from-${color}-500 to-${color}-600`"
+    class="cursor-pointer hover:bg-gradient-to-tr bg-gradient-to-br p-10 rounded-lg text-white"
   >
     <div
-      class="font-semibold text-xl my-2 mb-6 w-14 bg-indigo-500 p-3 rounded-full"
+    :class="`bg-${color}-600`"
+      class="font-semibold text-xl my-2 mb-6 w-14  p-3 rounded-full"
     >
     <component :is="`Icons${icon}`"/>
     </div>
@@ -18,8 +20,9 @@
 <script>
 import IconsVideo from "./icons/video.vue";
 import IconsTerminal from "./icons/terminal.vue";
+import IconsBook from "./icons/book.vue";
 export default {
-  components: { IconsVideo, IconsTerminal },
+  components: { IconsVideo, IconsTerminal, IconsBook },
   props: {
     title: {
       type: String,
@@ -28,6 +31,9 @@ export default {
       type: String,
     },
     icon: {
+      type: String,
+    },
+    color: {
       type: String,
     },
   },

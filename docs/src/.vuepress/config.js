@@ -40,12 +40,16 @@ module.exports = {
         lastUpdated: false,
         nav: [
             {
-                text: 'Guide',
-                link: '/guide/',
+                text: 'Tutorials',
+                link: '/tutorials/'
             },
             {
-                text: 'Video Screencasts',
+                text: 'Screencasts',
                 link: '/screencasts/'
+            },
+            {
+                text: 'Documentation',
+                link: '/documentation/',
             },
             {
                 text: 'Improve this on GitHub',

@@ -1,7 +1,12 @@
 <template>
   <main class="p-20">
-    <header>
-      Welcome to PistonAPI Documentation!
+    <header class="my-20">
+      <div class="text-5xl font-semibold">
+        {{ data.tagline }}
+      </div>
+      <div class="text-3xl my-4">
+        {{ data.bottonline }}
+      </div>
     </header>
 
     <div
@@ -13,37 +18,36 @@
         :title="feature.title"
         :details="feature.details"
         :icon="feature.icon"
+        :color="feature.color"
         :key="index"
       />
     </div>
 
     <Content class="theme-default-content custom" />
 
-    <div
-      v-if="data.footer"
-      class="footer"
-    >
-     {{ data.footer }}
+    <div>
+      Made with ❤️+☕. This website is
+      <a href="https://github.com/pistonapi/pistonapi-docs" target="_blank"> Open Source</a>.
     </div>
   </main>
 </template>
 
 <script>
-import ArticleThumb from './widgets/ArticleThumb.vue'
-import NavLink from '@theme/components/NavLink.vue'
+import ArticleThumb from "./widgets/ArticleThumb.vue";
+import NavLink from "@theme/components/NavLink.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: { NavLink, ArticleThumb },
   computed: {
-    data () {
-      return this.$page.frontmatter
+    data() {
+      return this.$page.frontmatter;
     },
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
-      }
-    }
-  }
-}
+        text: this.data.actionText,
+      };
+    },
+  },
+};
 </script>
