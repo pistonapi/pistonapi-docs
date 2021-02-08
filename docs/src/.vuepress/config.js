@@ -38,7 +38,7 @@ module.exports = {
                 link: '/guide/',
             },
             {
-                text: 'Screencasts',
+                text: 'Video Screencasts',
                 link: '/screencasts/'
             },
             {
