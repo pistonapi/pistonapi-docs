@@ -20,7 +20,7 @@ features:
   icon: Video
   color: indigo
 - title: Read the Documentation
-  details: Watch video series that cover core concepts of PistonAPI
+  details: Read all technical details of PistonAPI
   icon: Book
   color: green
 ---
