@@ -9,15 +9,6 @@
 
         <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
-        <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-            <template #top>
-                <slot name="sidebar-top" />
-            </template>
-            <template #bottom>
-                <slot name="sidebar-bottom" />
-            </template>
-        </Sidebar>
-
         <DocsHome v-if="$page.frontmatter.home" />
 
         <Page v-else :sidebar-items="sidebarItems">
@@ -35,13 +26,12 @@
 import DocsHome from "./DocsHome.vue";
 import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
-import Sidebar from "@theme/components/Sidebar.vue";
+
 // import { resolveSidebarItems } from '../util'
 export default {
     components: {
         DocsHome,
         Page,
-        Sidebar,
         Navbar,
     },
     data() {

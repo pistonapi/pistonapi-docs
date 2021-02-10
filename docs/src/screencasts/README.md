@@ -1,5 +1,2 @@
----
-sidebar: auto
----
 
 # Cooming Soon
