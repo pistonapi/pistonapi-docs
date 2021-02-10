@@ -52,3 +52,105 @@ export default {
   },
 };
 </script>
+<style>
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+svg{
+    display: block;
+    vertical-align: middle;
+}
+.p-20 {
+    padding: 5rem;
+}
+.my-20 {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+.grid-cols-3 {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.gap-4 {
+    gap: 1rem;
+}
+.my-10 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.grid {
+    display: grid;
+}
+.p-10 {
+    padding: 2.5rem;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.rounded-lg {
+    border-radius: .5rem;
+}
+.to-purple-600 {
+    --tw-gradient-to: #7c3aed;
+}
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+.from-purple-500 {
+    --tw-gradient-from: #8b5cf6;
+    --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to,rgba(139,92,246,0));
+}
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right,var(--tw-gradient-stops));
+}
+.w-14 {
+    width: 2.5rem;
+}
+.p-3 {
+    padding: .75rem;
+}
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+.my-2 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+.text-xl {
+    font-size: 1.25rem;
+}
+.text-lg, .text-xl {
+    line-height: 1.75rem;
+}
+.font-semibold {
+    font-weight: 600;
+}
+.rounded-full {
+    border-radius: 9999px;
+}
+.bg-purple-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(124,58,237,var(--tw-bg-opacity));
+}
+.text-lg, .text-xl {
+    line-height: 1.75rem;
+}
+.text-lg {
+    font-size: 1.125rem;
+}
+</style>
