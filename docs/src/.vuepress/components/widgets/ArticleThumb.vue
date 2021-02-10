@@ -1,50 +1,50 @@
 <template>
-  <div
-  @click="goTo(linkDestiny)"
-    :class="` from-${color}-500 to-${color}-600`"
-    class="cursor-pointer hover:bg-gradient-to-tr bg-gradient-to-br p-10 rounded-lg text-white"
-  >
     <div
-      :class="`bg-${color}-600`"
-      class="font-semibold text-xl my-2 mb-6 w-14 p-3 rounded-full"
+        @click="goTo(linkDestiny)"
+        :class="` from-${color}-500 to-${color}-600`"
+        class="cursor-pointer bg-gradient-to-br p-10 rounded-lg text-white"
     >
-      <component :is="`Icons${icon}`" />
+        <div
+            :class="`bg-${color}-600`"
+            class="font-semibold text-xl my-2 mb-6 w-14 p-3 rounded-full"
+        >
+            <component :is="`Icons${icon}`" />
+        </div>
+        <div class="font-semibold text-xl my-2 mb-4">
+            {{ title }}
+        </div>
+        <div class="text-lg">
+            {{ details }}
+        </div>
     </div>
-    <div class="font-semibold text-xl my-2 mb-4">
-      {{ title }}
-    </div>
-    <div class="text-lg">
-      {{ details }}
-    </div>
-  </div>
 </template>
 <script>
 import IconsVideo from "./icons/video.vue";
 import IconsTerminal from "./icons/terminal.vue";
 import IconsBook from "./icons/book.vue";
 export default {
-  components: { IconsVideo, IconsTerminal, IconsBook },
-  props: {
-    title: {
-      type: String,
+    components: { IconsVideo, IconsTerminal, IconsBook },
+    props: {
+        title: {
+            type: String,
+        },
+        details: {
+            type: String,
+        },
+        icon: {
+            type: String,
+        },
+        color: {
+            type: String,
+        },
+        linkDestiny: {
+            type: String,
+        },
     },
-    details: {
-      type: String,
+    methods: {
+        goTo: function (destiny) {
+            this.$router.push(destiny);
+        },
     },
-    icon: {
-      type: String,
-    },
-    color: {
-      type: String,
-    },
-    linkDestiny: {
-        type: String
-    }
-  },
-  methods: {
-      goTo: function (destiny){
-          this.$router.push(destiny);
-      }
-  },
 };
 </script>
