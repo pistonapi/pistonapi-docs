@@ -1,9 +1,11 @@
 ---
 sidebar: auto
 ---
-# Create an Waiting List backend feature
+# Beginner Tutorial
 
-## What we are building
+## Create an Waiting List backend feature
+
+### What we are building
 
 In this tutorial, you will learn how to set up a backend for a waiting list feature. Before digging-in in the which APIs we will be creating, let's take a look at the user experience.
 
