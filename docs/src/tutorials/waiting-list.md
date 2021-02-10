@@ -9,8 +9,8 @@ In this tutorial, you will learn how to set up a backend for a waiting list feat
 
 **In the frontend**,  a simple form where the users type their email (and maybe others info too) to submit to a pre-register.
 
-**In the admin area**, the admins only with right credentials will be able to retrieve all submited data.
+**In the admin area**, users with right permissions should be able to retrieve all submited data.
 
-To meet these requirements we will need two APIs endpoints. The first one is used for the register of a new item. In this case, registry a new user in the waiting list. This should be public, where anyone can call it, even without any authentication.
+To meet these requirements we will need **two APIs endpoints**. The first one is used for the register of new user in the waiting list. This should be public, where anyone can call it, even without any authentication.
 
 The second is get all registered items. But this one must be restricted to authenticated users only.

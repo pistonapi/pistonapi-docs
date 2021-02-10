@@ -1,5 +1,6 @@
 ---
 home: true
+pageClass: custom-page-class
 
 tagline: Getting started with PistonAPI
 bottonline: Here you will find a lot of content about PistonAPI. Step by step tutorials, screencasts and documentation.
