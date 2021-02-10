@@ -20,6 +20,7 @@
         :icon="feature.icon"
         :color="feature.color"
         :key="index"
+        :linkDestiny="feature.linkDestiny"
       />
     </div>
 

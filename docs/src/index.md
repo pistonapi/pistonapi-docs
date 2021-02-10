@@ -12,6 +12,8 @@ features:
   details: Step by step tutorial in how to build a waiting list API
   icon: Terminal
   color: purple
+  linkDestiny: 'tutorials/waiting-list.html#create-an-waiting-list-backend-feature'
+
 - title: Create an TO-DO app
   details: Step by step tutorial in how to build a TO-DO App backend
   icon: Terminal
