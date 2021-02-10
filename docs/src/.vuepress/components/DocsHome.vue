@@ -118,6 +118,31 @@ svg{
 .bg-gradient-to-br {
     background-image: linear-gradient(to bottom right,var(--tw-gradient-stops));
 }
+.to-indigo-600 {
+    --tw-gradient-to: #4f46e5;
+}
+.from-indigo-500 {
+    --tw-gradient-from: #6366f1;
+    --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to,rgba(99,102,241,0));
+}
+.bg-indigo-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(79,70,229,var(--tw-bg-opacity));
+}
+.to-green-600 {
+    --tw-gradient-to: #059669;
+}
+.from-green-500 {
+    --tw-gradient-from: #10b981;
+    --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to,rgba(16,185,129,0));
+}
+.bg-green-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(5,150,105,var(--tw-bg-opacity));
+}
+.bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right,var(--tw-gradient-stops));
+}
 .w-14 {
     width: 2.5rem;
 }
