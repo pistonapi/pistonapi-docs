@@ -31,4 +31,11 @@ Click on **New Project** on the left side, then you be presented to the screen w
 
 There are also some constraints. The project name must be unique in the entire PistonAPI and should contain only letters, numbers, hyphens, and underscores (starting with a letter).
 
-After choosing, just click on Create Project. 😊 In our example, we choose **tutorial-waiting-list** as the Project Name.
+After choosing, just click on Create Project. 😊 In our example, we choose **tutorial-waiting-list** as the Project Name. 
+
+### 2 - Create a new model
+
+![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We are not using that model on this project (check more about it on the [Users Model Documentation](/documentation)).
+
+
+
