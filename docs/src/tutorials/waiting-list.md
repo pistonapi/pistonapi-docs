@@ -27,18 +27,36 @@ In order to setup the needed API endpoint, you will have to go to [pistonapi.com
 
 ![A screenshot of the PistonAPI dashboard](./waiting-list-images/dashboard.png)
 
-Click on **New Project** on the left side, then you be presented to the screen where you have to choose your project name. When choosing a project name have in mind that this name will go on the URL of your endpoints in the format of **http://api.pistonapi.com/{project name}/**.
+Click on **New Project** on the left side, then you be presented to the screen where you have to choose your project name. When choosing a project name have in mind that this name will go on the URL of your endpoints in the format of **https://api.pistonapi.com/{project name}/**.
 
-There are also some constraints. The project name must be unique in the entire PistonAPI and should contain only letters, numbers, hyphens, and underscores (starting with a letter).
+::: tip
+There are some constraints around the project name. It must be unique in the entire PistonAPI and contain only letters, numbers, hyphens, and underscores (starting with a letter).
+:::
 
 After choosing, just click on Create Project. 😊 In our example, we choose **tutorial-waiting-list** as the Project Name. 
 
 ### 2 - Create a new model
 
-![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We are not using that model on this project (check more about it on the [Users Model Documentation](/documentation)).
+![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We are not using that model on this project (if you want to check more about it, go to the [Users Model Documentation](/documentation)).
 
 For the waiting list, we need to create a new model. A model represents something that will be manipulated (created, edited, etc) on your project. In this case, we want to create a model that represents each pre-registered user. So, click on **New Model** on the left and you be presented to the New Model screen.
 
-In this screen you have to set two information. The model name and its attributes. 
+In this screen, you have to set two information. The model name and its attributes. Given that the new model will represent a pre-registered user, a good call will be **pre-registered-user**.
 
+::: tip
+Keep in mind that are also some contraints about the model name. It will go in the url of the API endpoint, right after the project name like **https://api.pistonapi.com/{project name}/{model name}** so it must be an unique name **in that project**.
+:::
 
+Now you will have to set these model attributes. An attribute is a place to hold some information on each item of your model. Since that this model is about a **pre-registered-user** an **email** is a piece of information that we want to have for each **pre-registered-user**.
+
+Click on **Add Attribute** button. Two new fields will appear. The attribute name and its type. As said, **email** is the name that we will use and the type will be a **string**.
+
+![A screenshot of the PistonAPI new model screen](./waiting-list-images/new-model.png)
+
+_This is how the screen will look like after fulfilling everything that we need for this project_
+
+::: tip
+There is four attribute types available. String that is a text, Number that is a number, Datetime that is a date and time value and Boolean that is can only be TRUE or FALSE. In our case, an email will be of type string.
+:::
+
+Click on **Create Model** button. 
