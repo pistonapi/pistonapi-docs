@@ -37,5 +37,8 @@ After choosing, just click on Create Project. 😊 In our example, we choose **t
 
 ![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We are not using that model on this project (check more about it on the [Users Model Documentation](/documentation)).
 
+For the waiting list, we need to create a new model. A model represents something that will be manipulated (created, edited, etc) on your project. In this case, we want to create a model that represents each pre-registered user. So, click on **New Model** on the left and you be presented to the New Model screen.
+
+In this screen you have to set two information. The model name and its attributes. 
 
 
