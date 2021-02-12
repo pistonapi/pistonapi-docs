@@ -59,4 +59,8 @@ _This is how the screen will look like after fulfilling everything that we need 
 There is four attribute types available. String that is a text, Number that is a number, Datetime that is a date and time value and Boolean that is can only be TRUE or FALSE. In our case, an email will be of type string.
 :::
 
-Click on **Create Model** button. 
+Click on **Create Model** button. Your model will be created and you will be redirected to the model overview screen. There you can check the total number of items, number of requests, its schemas and most important the endpoints.
+
+PistonAPI automatically creates four endpoints with your model. At this point, you already has the endpoints that you need for your application. In the bottom of the screen you can see all endpoint and try each one.
+
+The only issue is that all endpoints has the default permission. And the default permission is only allow calls with authentication from a root user.
