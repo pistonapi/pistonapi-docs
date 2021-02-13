@@ -37,7 +37,7 @@ After choosing, just click on Create Project. 😊 In our example, we choose **t
 
 ### 2 - Create a new model
 
-![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We are not using that model on this project (if you want to check more about it, go to the [Users Model Documentation](/documentation)).
+![A screenshot of the PistonAPI dashboard with a new model](./waiting-list-images/dashboard-w-model.png) This is the screen after you created your new project. Note that the project comes with a model called **Users**. We gonna talk more about this in the next step.
 
 For the waiting list, we need to create a new model. A model represents something that will be manipulated (created, edited, etc) on your project. In this case, we want to create a model that represents each pre-registered user. So, click on **New Model** on the left and you be presented to the New Model screen.
 
@@ -61,8 +61,52 @@ There is four attribute types available. String that is a text, Number that is a
 
 Click on **Create Model** button. Your model will be created and you will be redirected to the model overview screen. There you can check the total number of items, number of requests, its schemas and most important the endpoints.
 
-PistonAPI automatically creates four endpoints with your model. At this point, you already has the endpoints that you need for your application. In the bottom of the screen you can see all endpoint and try each one.
+PistonAPI automatically creates four endpoints with your model. Lets try some of then.
 
-The only issue is that all endpoints has the default permission, which is only allow calls with authentication from a root user.
+The POST endpoint will be able to create a new pre-registered-user. Just send a JSON with the attributes that we set before, to the address ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/<YOUR_MODEL_NAME>***
 
-A root user is a user 
+```json
+{
+    "email":"john@doe.com"
+}
+```
+
+In the response data, will be provided an ID along with the request data. With this ID you can retrieve this item through the GET endpoint at the address ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/<YOUR_MODEL_NAME>/<ITEM_ID>***
+
+And you can also retrieve all pre-registered-users through the GET endpoint by not providing a specific ID. The address will be ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/<YOUR_MODEL_NAME>/***
+
+At this point, you already has the endpoints that you need for your application. The only issue is that all endpoints has the default permission, which is only allow calls with authentication from a root user of your project.
+
+### 3 - Project Users
+
+Before setting the last thing that we need on our project, let`s do a quick overview of what is a Project User and how you can authenticate with those.
+
+With each new project, PistonAPI creates automattically a **User** model. This model contains all users of your project. After you create a new user (through the POST endpoint) you can login with then with the AUTH endpoint. The AUTH endpoint will generate a token, that can be used on other endpoints to make a authenticated call.
+
+For all that to work, the user endpoint have some peculiarities. The POST endpoint of the User model is expecting a JSON with username, password and type.
+
+``` json
+{
+    "username": "john@doe.com",
+    "password": "super_secret",
+    "type": "regular_user",
+}
+```
+
+If the username or the password is not informed, the PistonAPI will generate a random for you. If the type is not informed, PistonAPI will assume the `DEFAULT` type.
+
+And the AUTH endpoint (that is the method POST on the url ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/auth*** ) is expecting the username and the password. If they match correctly, it will return a jwtToken, like this:
+
+``` json
+{
+  "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6I0dXRvcmlhbC13YWl0aW5nLWxpc3QiXSwiaWF0IjoxNjEzMjMxMDYyfQ.SQMlSyVPdCf7VlnDpiFjFxdRwmspqwAzOkJre-l6jZQ"
+}
+```
+
+The content of the jwtToken can be used on the header of other API calls to turn it an authenticated call. The head
+
+
+
+A root user is a user of your project with the type equals to ROOT. By default, the username and password that you used to login on PistonAPI is automattically replicated on your 
+
+### 4 - Changing endpoint permissions
