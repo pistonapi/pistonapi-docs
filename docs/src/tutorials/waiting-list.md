@@ -75,15 +75,15 @@ In the response data, will be provided an ID along with the request data. With t
 
 And you can also retrieve all pre-registered-users through the GET endpoint by not providing a specific ID. The address will be ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/<YOUR_MODEL_NAME>/***
 
-At this point, you already has the endpoints that you need for your application. The only issue is that all endpoints has the default permission, which is only allow calls with authentication from a root user of your project.
+At this point, you already has the endpoints that you need for your application. The only issue is that all endpoints has the default permission, which is only allow calls with authentication of a user of your project with type `root`.
 
 ### 3 - Project Users
 
 Before setting the last thing that we need on our project, let`s do a quick overview of what is a Project User and how you can authenticate with those.
 
-With each new project, PistonAPI creates automattically a **User** model. This model contains all users of your project. After you create a new user (through the POST endpoint) you can login with then with the AUTH endpoint. The AUTH endpoint will generate a token, that can be used on other endpoints to make a authenticated call.
+With each new project, PistonAPI creates automattically a **User** model. This model contains all users of your project. After you create a new user (through the POST endpoint) you can obtain the authentication token with the AUTH endpoint, that can be used on other endpoints to make a authenticated calls.
 
-For all that to work, the user endpoint have some peculiarities. The POST endpoint of the User model is expecting a JSON with username, password and type.
+For all that to work, the user model have some peculiarities. The POST endpoint, for example, is expecting a JSON with username, password and type.
 
 ``` json
 {
@@ -95,18 +95,34 @@ For all that to work, the user endpoint have some peculiarities. The POST endpoi
 
 If the username or the password is not informed, the PistonAPI will generate a random for you. If the type is not informed, PistonAPI will assume the `DEFAULT` type.
 
-And the AUTH endpoint (that is the method POST on the url ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/auth*** ) is expecting the username and the password. If they match correctly, it will return a jwtToken, like this:
+And the AUTH endpoint (that is the method POST on the url ***https://api.pistonapi.com/<YOUR_PROJECT_NAME>/auth*** ) is expecting the username and the password. If they match correctly, it will return a authenticationToken, like this:
 
 ``` json
 {
-  "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6I0dXRvcmlhbC13YWl0aW5nLWxpc3QiXSwiaWF0IjoxNjEzMjMxMDYyfQ.SQMlSyVPdCf7VlnDpiFjFxdRwmspqwAzOkJre-l6jZQ"
+  "authenticationToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6I0dXRvcmlhbC13YWl0aW5nLWxpc3QiXSwiaWF0IjoxNjEzMjMxMDYyfQ.SQMlSyVPdCf7VlnDpiFjFxdRwmspqwAzOkJre-l6jZQ"
 }
 ```
 
-The content of the jwtToken can be used on the header of other API calls to turn it an authenticated call. The head
+This authenticationToken can be used on the header of other API calls to turn it an authenticated call. The header must be in the format:
 
+authorization: Bearer ***< authenticationToken >***
 
-
-A root user is a user of your project with the type equals to ROOT. By default, the username and password that you used to login on PistonAPI is automattically replicated on your 
+By default, the username and password that you used to login on PistonAPI is automattically replicated on your **user** model data, with the type `ROOT`.
 
 ### 4 - Changing endpoint permissions
+
+As said before, the pre-registered-user model will only accept authenticated calls with a user of type `ROOT`. 
+
+This is perfectly fine to the GET, PATCH and DELETE endpoints. After all, we just want some authorized users having access to the pre-registered-user data. 
+
+But the POST endpoint should be public, because we want to anyone be able to create a new pre-registered-user item.
+
+To change that, click on the Permissions option of the POST endpoint, just like the image bellow.
+
+![A screenshot of the PistonAPI dashboard highlighting the permissions button](./waiting-list-images/dashboard-permissions.png)
+
+Choose the `public` option and we a ready to go.
+
+![A screenshot of the PistonAPI dashboard highlighting the permissions button](./waiting-list-images/dashboard-permissions-widget.png)
+
+### 5 - Conclusion
