@@ -63,4 +63,6 @@ Click on **Create Model** button. Your model will be created and you will be red
 
 PistonAPI automatically creates four endpoints with your model. At this point, you already has the endpoints that you need for your application. In the bottom of the screen you can see all endpoint and try each one.
 
-The only issue is that all endpoints has the default permission. And the default permission is only allow calls with authentication from a root user.
+The only issue is that all endpoints has the default permission, which is only allow calls with authentication from a root user.
+
+A root user is a user 
