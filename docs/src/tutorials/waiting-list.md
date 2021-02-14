@@ -128,3 +128,15 @@ Choose the `public` option and we a ready to go.
 ![A screenshot of the PistonAPI dashboard highlighting the permissions button](./waiting-list-images/dashboard-permissions-widget.png)
 
 ### 5 - Conclusion
+
+At this point we have two endpoint that can be used to backend our Waiting List feature.
+
+The **POST** endpoint is public and must be used directly on the public form to pre-register a user.
+
+The **GET** endpoint is restricted to authenticated users and must be used to retrieve all registered user on a admin area.
+
+Hope that you learn something and PistonAPI made your life easier. 
+
+::: tip
+This page is opensource, so feel free to add to it. [GitHub Repository](https://github.com/pistonapi/pistonapi-docs)
+:::
