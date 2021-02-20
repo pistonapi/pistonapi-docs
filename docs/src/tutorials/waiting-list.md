@@ -28,7 +28,7 @@ The first thing is to go to [pistonapi.com](https://pistonapi.com) and create a 
 Click on **New Project** on the left side, then you be presented to the screen where you have to choose your project name. When choosing a project name have in mind that this name will go on the URL of your endpoints in the format of `https://api.pistonapi.com/<YOUR_PROJECT_NAME>`.
 
 ::: tip
-There are some constraints around the project name. It must be unique in the entire PistonAPI and contain only letters, numbers, hyphens, and underscores (starting with a letter).
+There are some constraints around the project name. It must be unique in the entire PistonAPI , must start with a letter and contain only letters, numbers, hyphens, and underscores.
 :::
 
 After choosing, just click on **Create Project**. In our example, we choose `tutorial-waiting-list` as the Project Name. 
