@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # Introduction
 
 PistonAPI is a low code platform that allows the creation of a RestAPI based backend. With only a couple of clicks, your API is ready to use.
@@ -17,3 +21,25 @@ So in a lot of cases is more productively build some graphics and reports on Mic
 ## When to use PistonAPI?
 
 PistonAPI is not *"one size fits all"*. Despite its great flexibility, its [...] 
+
+
+# Core Concepts
+
+## Projects
+## Models
+## Models Attributes
+## Endpoints
+## Endpoint Permissions
+## Endpoint Enforced Filters
+## Endpoint Functions
+
+# Using your APIs
+## User Project Authentication
+## Creating a new item
+## Getting existing items
+## Editing a existing item
+## Deleting a existing item
+
+# Other concepts
+## Regex Pattern
+## Limitations and Edge Cases

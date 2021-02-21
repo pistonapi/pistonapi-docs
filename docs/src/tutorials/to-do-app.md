@@ -59,6 +59,17 @@ Later on, we will see some examples, but if you want to deep learn more about pr
 
  To configure that, go to **POST** endpoint permissions as the image below points. The option that we will choose is **Custom User Type** where PisonAPi checks if the user is authenticated and if the user type is the specified one before trying to perform the requested action.
 
- Because we want any authenticated user to be able to create a 
+ Because we want any authenticated user to be able to create a `to-do-item`, we need to specify any user type. Fortunately, the user-type field accepts regex patterns.
+
+ ::: tip
+ To learn more about regex patterns you can check the official documentation about it.
+ :::
+
+So we can just set the pattern bellow that will be enought to accept any user type string content.
+```regex
+.+
+```
+
+
 
  But the issue is that the createdBy field can be arbritrary setted by the caller.
