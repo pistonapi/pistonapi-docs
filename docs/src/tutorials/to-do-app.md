@@ -66,7 +66,43 @@ Fortunately, fixing that is easy. It's just some configuration adjustments. Go t
  ::: tip
  To learn more about regex patterns you can check the official documentation.
  :::
-Once the permission is saved, the endpoint will accept calls from any authenticated user.
+Once the permission is saved, the endpoint will accept calls from any authenticated user. First issue solved ✔️.
+
+The second issue is that the `createdBy` attribute can be arbitrary set by the request content. There is no guarantee that the content will actually represent the user that made the create `to-do-item` request.
+
+To fix that we gonna edit the endpoint function. A endpoint function is a Javascript function that is executed internally on PistonAPI before it tries to perfom the pretended action on that endpoint. Go to the **Function** option on the **POST** endpoint. The default function is:
+
+```javascript
+const pistonapiFunction = (receivedContent, currentUser) => {
+  return receivedContent;
+};
+```
+
+That is basically returning the `receivedContent` without doing anything else. The `receivedContent` is exactly the **JSON** content sent by the endpoint caller. Here we have the oportunite to set a value to `createdBy` attribute that will overwrite any value provided by the caller.
+
+Let's make a small modification and inspect the result. Adding the line `receivedContent.createdby = "Test";` right before the returning value:
+
+```javascript
+const pistonapiFunction = (receivedContent, currentUser) => {
+  receivedContent.createdby = "Test";
+  return receivedContent;
+};
+```
+
+If you click on **Random Input Test** you can inspect a test against the function with an input of random values. With that function, the `createdby` value will be always `Test` regardless of what was originally provided on the request. But we need that the value to be the username of the authenticated user. Fortunately, that is very easy on PistonAPI. The `currentUser` variable contains an object with the authenticated user attributes (name, username, and type). If we replace the recently added line with `receivedContent.createdby = currentUser.username;`:
+
+```javascript
+const pistonapiFunction = (receivedContent, currentUser) => {
+  receivedContent.createdby = currentUser.username;
+  return receivedContent;
+};
+```
+
+Voilà! Here we have a function that will replace any received value on the `createdby` with the username of the authenticated user.
+
+::: tip
+Keep in mind that the `currentUser` will be always filled because of the permission that we set before. If you change the permission to `public`, for example, the endpoint could be called without any authentication at all. That will throw an error on the function because the `currentUser` will be empty, result in an error response to the endpoint caller.
+:::
 
 
- But the issue is that the createdBy field can be arbritrary setted by the caller.
+###  4 - Configuring the endpoint to mark the `to-do-item` as completed.
