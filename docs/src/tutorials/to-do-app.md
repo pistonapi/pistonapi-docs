@@ -38,9 +38,27 @@ Keep in mind that are also some contraints about the model name. It will go in t
 :::
 
 
-Now you will have to set these model attributes. An attribute is a place to hold some information on each item of your model. Since that this model is about a `to-do-item` it must have an `description` that will contains the text that describle that `to-do-item` and an attribute to represent if that `to-do-item` is completed or not so we will add a boolean attribute named `completed`. Because we will have multiple users on our app, we also need to store the owner of that `to-do-item`, so we will add a string attribute name `createdBy`.
+Now you will have to set these model attributes. An attribute is a place to hold some information on each item of your model. Since that this model is about a `to-do-item` we will have three attributes: 
+* `description` That will be a string type attribute that will contain a text that describle the `to-do-item`.
+* `completed` That will be a boolean type attribute that will represent if the `to-do-item` is completed or not.
+* `createdBy` That will be special. It's an attribute that will not likely show to the final user. Will be string type and used to specify which user created that `to-do-item`. It's essential to restrict the viewing and editing of the `to-do-item` only to their owners.
+
 
 ![A screenshot of the PistonAPI dashboard](./to-do-images/dashboard-new-model.png)
 
 This is how the screen should looks like with all the correct new model configuration. Now click on **Create Model** button.
 
+###  3 - Configuring the endpoint to create a new `to-do-item`
+
+Now we already have the endpoint for creating a new `to-do-item`. In this example, it is a **POST** request on the URL `https://api.pistonapi.com/tutorial-todo-app/to-do-item`
+ But it has two issues. The first one is that it has the default permission, which only allows calls with authentication of a user of your project with the type `root`. As said before we want any authenticated user to be able to create a `to-do-item`.
+
+::: tip
+Later on, we will see some examples, but if you want to deep learn more about project authentication will go to the official documentation.
+:::
+
+ To configure that, go to **POST** endpoint permissions as the image below points. The option that we will choose is **Custom User Type** where PisonAPi checks if the user is authenticated and if the user type is the specified one before trying to perform the requested action.
+
+ Because we want any authenticated user to be able to create a 
+
+ But the issue is that the createdBy field can be arbritrary setted by the caller.
