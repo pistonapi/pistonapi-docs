@@ -51,25 +51,22 @@ This is how the screen should looks like with all the correct new model configur
 ###  3 - Configuring the endpoint to create a new `to-do-item`
 
 Now we already have the endpoint for creating a new `to-do-item`. In this example, it is a **POST** request on the URL `https://api.pistonapi.com/tutorial-todo-app/to-do-item`
- But it has two issues. The first one is that it has the default permission, which only allows calls with authentication of a user of your project with the type `root`. As said before we want any authenticated user to be able to create a `to-do-item`.
+But it has two issues. The first one is that it has the default permission, which only allows calls of authenticated users with the type `root`. As said before we want any authenticated user to be able to create a `to-do-item`.
 
 ::: tip
-Later on, we will see some examples, but if you want to deep learn more about project authentication will go to the official documentation.
+Later on, we will see some examples of user authentication. But if you want to learn more, there is also official documentation about this topic.
 :::
 
- To configure that, go to **POST** endpoint permissions as the image below points. The option that we will choose is **Custom User Type** where PisonAPi checks if the user is authenticated and if the user type is the specified one before trying to perform the requested action.
+Fortunately, fixing that is easy. It's just some configuration adjustments. Go to **POST** endpoint permissions (as the image below points). We have three available options. And the one that we gonna use is **Custom User Type**. This type of permissions makes PisonAPi check if there is an authenticated user and if that user has the specified type. Only if these two checks are true the requested action will be performed.
 
- Because we want any authenticated user to be able to create a `to-do-item`, we need to specify any user type. Fortunately, the user-type field accepts regex patterns.
-
- ::: tip
- To learn more about regex patterns you can check the official documentation about it.
- :::
-
-So we can just set the pattern bellow that will be enought to accept any user type string content.
+ Because we want any type of authenticated user to be able to create a `to-do-item`, we need to specify any user type. The user-type field accepts regex patterns. We can set the pattern below that will be enough to accept any user-type.
 ```regex
 .+
 ```
-
+ ::: tip
+ To learn more about regex patterns you can check the official documentation.
+ :::
+Once the permission is saved, the endpoint will accept calls from any authenticated user.
 
 
  But the issue is that the createdBy field can be arbritrary setted by the caller.
