@@ -60,9 +60,7 @@ svg{
     display: block;
     vertical-align: middle;
 }
-.p-20 {
-    padding: 5rem;
-}
+
 .my-20 {
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -82,8 +80,16 @@ svg{
     font-size: 1.875rem;
     line-height: 2.25rem;
 }
-.grid-cols-3 {
-    grid-template-columns: repeat(3,minmax(0,1fr));
+@media (min-width: 640px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+    .md:p-20 {
+        padding: 5rem;
+    }
+}
+.p-20 {
+        padding: 1rem;
 }
 .gap-4 {
     gap: 1rem;
