@@ -116,3 +116,87 @@ Keep in mind that the `currentUser` will be always filled because of the permiss
 
 
 ###  4 - Configuring the endpoint to mark the `to-do-item` as completed.
+
+Now let's think about the **PATCH** endpoint. There is a bunch of treatments that we could do on that endpoint, but we gonna focus on three things. 
+
+First, adjust the permissions to the same as we did on the **POST** endpoint. Go to the permissions option, set it to **Custom User Type**, and put the same regex pattern that we used before.
+
+Second, we want to avoid the modification of the `createdby` attribute. After all, the creator of the item will never be modified. So, we gonna adjust the function of this endpoint. Let's add a line that will delete any content on this attribute. This way only content of other attributes will proceed to perform the update action.
+
+```javascript
+const pistonapiFunction = (receivedContent, currentUser) => {
+  delete receivedContent.createdby;
+  return receivedContent;
+};
+```
+
+Now any content passed to `createdby` attribute will be deleted and consequently will never be updated.
+
+The third issue is peculiar. There is a kind of vulnerability to the current configuration of this endpoint. Take a second to try to guess. 👀
+
+The issue is that anyone can update values of any `to-do-item`. We want to only the owner of the `to-do-item` be able to update then. To fix that we gonna use another feature of PisonAPI, called **Enforced Filter**. 
+
+Before adding an **Enforced Filter**, let take a look at **Filters**. **Filters** is a query parameter that you can use on the **GET** endpoint URL to filter the returned data. You can check full documentation on the various options that **Filters** can apply. But here, we will only need the simplest use case. If you add 
+
+```
+?filter[createdby]=Test
+```
+
+To the **GET** endpoint it will filter the data to only retrieve `to-do-item` that have the `createdby` attribute equals to `Test`. 
+
+An **Enforced Filter** is a filter that you can configure to be applied to restrict the data that can be affected by some action. For example, if you add `filter[createdby]=Test` to the **PATCH** endpoint only `to-do-item` that have the `createdby` attribute equals `Test` will be affected. Any attempt to do update unmatched items will result in a not-found error. 
+
+On an **Enforced Filter** you can also use a special keyword `$currentUser`. With that, you have access to the authenticated user that is making the request.
+
+That way, the **Enforced Filter** that we gonna use to address the last issue is:
+
+```
+filter[createdby]=$currentUser.username
+```
+
+This way, only items with the `createdby` attribute equal to the current user username can be affected, restricting the editing only for the item owners.
+
+To set this **Enforced Filter** go to enforced filter option at the endpoint and type the filter.
+
+###  5 - Configuring the endpoint to get all `to-do-item`.
+
+The last endpoint that we need to configure is the **GET** endpoint. It will be responsible for retrieving the `to-do-item`. But no new concepts will be used. We have to set the same permissions as before, and the same **Enforced Filter**. That way we gonna guarantee that every registered user can call this endpoint and will only obtain your own `to-do-item` items.
+
+### 6 - Let's run some tests.
+
+We are ready to test our backend. Let's do together a complete life cycle of the user. Remember that in my case the project name is **tutorial-todo-app** and the main model is **to-do-item** so things can vary a little to your case.
+
+The user will starting by creating a new username through the **POST** endpoint of the `users` model. In my case, the URL will be  **https://api.pistonapi.com/tutorial-todo-app/users**. This is an example of content to create a new username. We don't need to set the type attribute, the `default` type will be fine.
+
+``` json
+{
+    "username": "tutorial-test",
+    "password": "super-secret"
+}
+```
+_POST content to https://api.pistonapi.com/tutorial-todo-app/users_
+
+The response should be a JSON with the username, user type, and it's ID.
+
+``` json
+{
+  "username": "tutorial-test",
+  "type": "default",
+  "id": "np4fvzghl9"
+}
+```
+
+Now let's authenticate with this user. It's again a **POST** request but for the URL will be **https://api.pistonapi.com/tutorial-todo-app/auth**. The content will be the username and password.
+
+``` json
+{
+    "username": "tutorial-test",
+    "password": "super-secret"
+}
+```
+_POST content to https://api.pistonapi.com/tutorial-todo-app/auth_
+
+
+
+
+

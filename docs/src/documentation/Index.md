@@ -29,9 +29,12 @@ PistonAPI is not *"one size fits all"*. Despite its great flexibility, its [...]
 ## Models
 ## Models Attributes
 ## Endpoints
-## Endpoint Permissions
-## Endpoint Enforced Filters
-## Endpoint Functions
+## Permissions
+## Pagination
+## Filters
+## Enforced Filters
+## Functions
+
 
 # Using your APIs
 ## User Project Authentication
