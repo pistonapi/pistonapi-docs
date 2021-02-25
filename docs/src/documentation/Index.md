@@ -50,20 +50,24 @@ Some examples of valid project names:
 
 ## Models
 
-A model is an entity that is defined by a name and some attributes. To start learning it concept you can imagine a model as a table on a database. On PistonAPI a model has much more features and peculiarities than a table but it's a good starting point.
+A **Model** is an entity that is composed by a **Model Name** and **Model Attributes**. To understand its concept you can imagine a model like a table on a database. For **PistonAPI** a **Model** has much more features and peculiarities than a database table, but imaging it like this is a good starting point.
 
-The model name has some constraints. Differently from the Project Name, it must be unique only on the project scope, so it can exist two models with the same name on PistonAPI as long as they're in different projects. The model name also must start with a letter, containing only letters, numbers, hífens, and underscores. Must be at least 4 characters and a maximum of 36.
+The **Model Name** has some constraints. Differently from the **Project Name**, it must be unique **only on the project scope**, so it can exist two models with the same name on PistonAPI as long as they're in different projects. The **Model Name** also must start with a letter, containing only letters, numbers, hífens, and underscores. Must be at least 4 characters and a maximum of 36.
 
-A model must have at least one attribute and have a maximum of 36. In the next chapter, we will talk about attributes and their types.
+A **Model** must have at least one **Model Attribute** and have a maximum of 36. In the next chapter, we will talk about **Model Attribute** and their types.
 
-When you set a new model on **PistonAPI** various things are automatically configured along with it. For example, the database. Once you set the model, the database is ready to persist data with the attributes set before. There are also permissions, functions, and endpoints (we will address each of these topics in the documentation). All of them are ready to use once you set the model, effortlessly.
+When you set a new **Model** on **PistonAPI** various things are automatically configured along with it. For example, the database. Once you set the **Model**, the **PistonAPI** database is ready to persist data with the attributes set before. There are also permissions, functions, and endpoints (we will address each of these topics in this documentation). All of them are ready to use once you set the model, **effortlessly**.
 
-Another concept is the **Model Item**. If we follow the analogy that the Model is somehow like a database table, a **Model Item** will be a record on that table. The **Model** define a shape of the information and the **Model Item** is a unity of that information.
+Another concept is the **Model Item**. If we follow the analogy that the Model is somehow like a database table, a **Model Item** will be a record on that table. The **Model** defines the shape of the information and the **Model Item** is a unity of that information.
 
 
 ## Model Attributes
 
-Each model must have at least one **Attribute**. As the name says, an **Attribute** is an piece of information that comes toghetes with a **Model Item**. Each **Attribute** has a name and a type. The **Attribute Name** follow the same constraints as we know for naming. It must start with a letter, contain only letters, numbers, hyphens, and underscores. Having at least 4 characters and a maximum of 36.
+Each model must have at least one **Attribute**. Each **Attribute** has a name and a type. An **Attribute** holds information (with the specified type) that comes together on each **Model Item**. 
+
+For example, there may be a **Model** called **Book** that has the attribute **Author**. So each **Book** item will have its own **Author**.
+
+The **Attribute Name** (`Author` in the example) must follow the same constraints as we know for naming. It must start with a letter, contain only letters, numbers, hyphens, and underscores. Having at least 4 characters and a maximum of 36.
 
 The **Attribute Type** specify which data type is supported by the attribute.
 
