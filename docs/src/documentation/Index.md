@@ -120,9 +120,9 @@ For default, we have four endpoints:
 
 
 
-- **POST** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME**. This endpoint must be used when the intention is to create a new item of that model. The request content must be a valid 
+- **POST** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME**. This endpoint must be used when the intention is to create a new item of that model. The request content must be a valid.
 
--
+- 
 
 ::: warning
 Have in mind that PistonAPI has a special **Model** called `users` that have some peculiarities. That will be covered on the next topic of the documentation.
