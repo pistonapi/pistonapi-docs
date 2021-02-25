@@ -56,14 +56,54 @@ The model name has some constraints. Differently from the Project Name, it must 
 
 A model must have at least one attribute and have a maximum of 36. In the next chapter, we will talk about attributes and their types.
 
-When you set a new model on PistonAPI various things are automatically configured along with it. For example, the database. Once you set the model, the database is ready to persist data with the attributes set before. There are also permissions, functions, and endpoints (we will address each of these topics in the documentation). All of them are ready to use once you set the model, effortlessly.
+When you set a new model on **PistonAPI** various things are automatically configured along with it. For example, the database. Once you set the model, the database is ready to persist data with the attributes set before. There are also permissions, functions, and endpoints (we will address each of these topics in the documentation). All of them are ready to use once you set the model, effortlessly.
 
-Another concept is the **Model Item**. If we follow the analogy that the Model is somehow like a table, a **Model Item** will be a line on that table.  I mean, the **Model** define a shape of the information. 
+Another concept is the **Model Item**. If we follow the analogy that the Model is somehow like a database table, a **Model Item** will be a record on that table. The **Model** define a shape of the information and the **Model Item** is a unity of that information.
 
 
 ## Model Attributes
 
-Each model must have at least one attribute. As the name says, an attribute is an piece of information that comes toghetes with a model item.
+Each model must have at least one **Attribute**. As the name says, an **Attribute** is an piece of information that comes toghetes with a **Model Item**. Each **Attribute** has a name and a type. The **Attribute Name** follow the same constraints as we know for naming. It must start with a letter, contain only letters, numbers, hyphens, and underscores. Having at least 4 characters and a maximum of 36.
+
+The **Attribute Type** specify which data type is supported by the attribute.
+
+::: tip
+ Each **Attribute Type** has an validation that will be applied to any information provided to that attribute. If the validation fails it will throw an error with the id **InvalidInput**.
+:::
+
+PistonAPI acctually have four types available:
+
+- **string** Its made for text. Any content is allowed. The only limitation is the maximum size of 4.096 characters (if your use case needs more, please let us know). The validation is that the content must be provided under double quotes. Example:
+
+``` json
+    {
+        my-string-attribute: "Always under double quotes"
+    }
+```
+
+- **number** Its made for numbers. It can be both integer or decimals. The validation is that the content must be provided without double quotes and the decimal separator must be a dot. Example:
+
+``` json
+    {
+        my-number-attribute: 1020.5
+    }
+```
+
+- **datetime** Its made for date and time. The validation is that the content must be provided with double quotes and have the specific format of ISO860 (YYYY-MM-DDThh:mm:ss).
+
+``` json
+    {
+        my-datetime-attribute: "2021-02-25T20:15:56"
+    }
+```
+
+- **boolean** Its made for values that can only be true or false. The validation is that the content must be provided **without** double quotes and can be only `true` or `false` (lowercase). Example:
+
+``` json
+    {
+        my-boolean-attribute: true
+    }
+```
 
 ## Users Model
 
