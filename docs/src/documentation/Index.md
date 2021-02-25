@@ -109,9 +109,27 @@ PistonAPI acctually have four types available:
     }
 ```
 
+## Endpoints
+
+Each **Model** has some HTTPS endpoints. That means, some **URL** address that you can do HTTPS requests to interact with the **Model Items**. For every endpoint the request content must allways be a valid [JSON](https://www.json.org/json-en.html).
+::: tip
+There is an optional header attribute that can be added to each request called `Authorization`. We will talk about this on the Permissions section of the documentation.
+:::
+
+For default, we have four endpoints:
+
+
+
+- **POST** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME**. This endpoint must be used when the intention is to create a new item of that model. The request content must be a valid 
+
+-
+
+::: warning
+Have in mind that PistonAPI has a special **Model** called `users` that have some peculiarities. That will be covered on the next topic of the documentation.
+:::
+
 ## Users Model
 
-## Endpoints
 ## Permissions
 ## Pagination
 ## Filters
