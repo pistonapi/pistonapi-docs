@@ -50,7 +50,7 @@ Some examples of valid project names:
 
 ## Models
 
-A **Model** is an entity that is composed by a **Model Name** and **Model Attributes**. To understand its concept you can imagine a model like a table on a database. For **PistonAPI** a **Model** has much more features and peculiarities than a database table, but imaging it like this is a good starting point.
+A **Model** is an entity that is composed by a **Name** and **Attributes**. To understand its concept you can imagine a **Model** like a table on a database. For **PistonAPI** a **Model** has much more features and peculiarities than a database table, but imaging it like this is a good starting point.
 
 The **Model Name** has some constraints. Differently from the **Project Name**, it must be unique **only on the project scope**, so it can exist two models with the same name on PistonAPI as long as they're in different projects. The **Model Name** also must start with a letter, containing only letters, numbers, hífens, and underscores. Must be at least 4 characters and a maximum of 36.
 
