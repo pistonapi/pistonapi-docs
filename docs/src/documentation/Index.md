@@ -6,9 +6,7 @@ sidebar: auto
 
 PistonAPI is a low code platform that allows the creation of a RestAPI based backend. With only a couple of clicks, your API is ready to use.
 
-## Production Ready
 
-The entire stack (all resources and cloud providers) of PistonAPI is ready to scale as far as your application requires.
 
 ## The Low Code Concept
 
@@ -20,14 +18,55 @@ So in a lot of cases is more productively build some graphics and reports on Mic
 
 ## When to use PistonAPI?
 
-PistonAPI is not *"one size fits all"*. Despite its great flexibility, its [...] 
+With the same analogy of Microsoft Excel, its spreadsheets don't solve every problem of the world. So the best way of understanding how far can PistonAPI goes is by taking a look at its learning resources. Also, don't hesitate to contact us. There is a button on every page 'Talk with us'.
 
 
 # Core Concepts
 
 ## Projects
+
+A **Project** is a logical subdivision that holds a bunch of models. You can think of it like an app, where each one has its own APIs, databases, permissions, functions, and so on.
+
+The **Project Name** is relevant, because it will go on the URL of all project endpoints, with the format:
+
+```
+https://api.pistonapi.com/<YOUR_PROJECT_NAME>/
+```
+
+There are some constraints around the **Project Name**. As it goes on the first path of the API URL it must be unique on the entire PistonAPI. If you try to create a Project with a name that already exists, it will throw an error with the message: _Project name already registered. Please, try another._
+
+Every **Project Name** must start with a letter. And contain only letters, numbers, hyphens, and underscores. Having at least 4 characters and a maximum of 36.
+
+Some examples of valid project names:
+
+- ✅ my-dope-app
+- ✅ my-amazing-7-app
+- ✅ my_project
+
+- ⛔ 7-my-dope-app _(starts with a number)_
+- ⛔ my-@dope-app _(invalid character)_
+- ⛔ app _(to short)_
+ 
+
 ## Models
-## Models Attributes
+
+A model is an entity that is defined by a name and some attributes. To start learning it concept you can imagine a model as a table on a database. On PistonAPI a model has much more features and peculiarities than a table but it's a good starting point.
+
+The model name has some constraints. Differently from the Project Name, it must be unique only on the project scope, so it can exist two models with the same name on PistonAPI as long as they're in different projects. The model name also must start with a letter, containing only letters, numbers, hífens, and underscores. Must be at least 4 characters and a maximum of 36.
+
+A model must have at least one attribute and have a maximum of 36. In the next chapter, we will talk about attributes and their types.
+
+When you set a new model on PistonAPI various things are automatically configured along with it. For example, the database. Once you set the model, the database is ready to persist data with the attributes set before. There are also permissions, functions, and endpoints (we will address each of these topics in the documentation). All of them are ready to use once you set the model, effortlessly.
+
+Another concept is the **Model Item**. If we follow the analogy that the Model is somehow like a table, a **Model Item** will be a line on that table.  I mean, the **Model** define a shape of the information. 
+
+
+## Model Attributes
+
+Each model must have at least one attribute. As the name says, an attribute is an piece of information that comes toghetes with a model item.
+
+## Users Model
+
 ## Endpoints
 ## Permissions
 ## Pagination
