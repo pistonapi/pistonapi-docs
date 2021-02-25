@@ -164,7 +164,11 @@ The last endpoint that we need to configure is the **GET** endpoint. It will be 
 
 ### 6 - Let's run some tests.
 
-We are ready to test our backend. Let's do together a complete life cycle of the user. Remember that in my case the project name is **tutorial-todo-app** and the main model is **to-do-item** so things can vary a little to your case.
+We are ready to test our backend. Let's do together a complete life cycle of the user. 
+
+::: warning
+Remember that in my case the project name is **tutorial-todo-app** and the main model is **to-do-item** so your URL will be slightly different. Make sure you replace  with the correct values.
+:::
 
 The user will starting by creating a new username through the **POST** endpoint of the `users` model. In my case, the URL will be  **https://api.pistonapi.com/tutorial-todo-app/users**. This is an example of content to create a new username. We don't need to set the type attribute, the `default` type will be fine.
 
@@ -186,7 +190,7 @@ The response should be a JSON with the username, user type, and it's ID.
 }
 ```
 
-Now let's authenticate with this user. It's again a **POST** request but for the URL will be **https://api.pistonapi.com/tutorial-todo-app/auth**. The content will be the username and password.
+Now let's authenticate with this user. It's again a **POST** request but the URL will be **https://api.pistonapi.com/tutorial-todo-app/auth**. The content will be the username and password.
 
 ``` json
 {
@@ -196,6 +200,50 @@ Now let's authenticate with this user. It's again a **POST** request but for the
 ```
 _POST content to https://api.pistonapi.com/tutorial-todo-app/auth_
 
+The response should be something like
+
+``` json
+{
+  "authenticationToken": "eyJhbGciOiI6IkpXVCJ9.eyJ1c2V0.Md50w2Z_l74xVinGEUQA"
+}
+```
+
+This is an `authentication token` that will be on the header of the next requests. the format should be `authorization: Bearer <Authentication Token>`
+
+Now let's add some `to-do-item`. If you try to create a new `to-do-item` through the **POST** endpoint without any authentication token you will get an **unauthorized error**.
+
+Let's create the first `to-do-item`. It's a **POST** request to the URL `https://api.pistonapi.com/tutorial-todo-app/to-do-item`. You can ommit the `createdby` attribute. The JSON content is something like:
+
+``` json
+{
+  "description": "Follow PistonAPI at Twitter",
+  "completed": false
+}
+```
+
+The response will be something like:
+
+``` json
+{
+  "description": "Follow PistonAPI at Twitter",
+  "completed": false,
+  "createdby": "tutorial-test",
+  "id": "buof2h9ja1"
+}
+```
+
+Now if you call the **GET** endpoint, you be able to retrieve the recently created item. Make sure you inform the `authentication token`. 
+
+Remember that if you create an item with other user (using other `authentication token`), the **GET** endpoint will only retrieve the items of the user of the `authentication token`.
+
+
+### 7 - Conclusion
+
+So, we build a very cool backend here. Two keypoints:
+
+The flexibility of the endpoint Function that can be used to add business logic to your endpoints. There is a lot that you can add to our example, like validating to the `TO-DO-ITEM` content, or default value etc.
+
+The Enforced Filter that can be used to personlize the response accordiling to the current user.
 
 
 
