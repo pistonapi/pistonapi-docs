@@ -118,11 +118,11 @@ There is an optional header attribute that can be added to each request called `
 
 For default, we have four endpoints:
 
+- **POST** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME**. This endpoint must be used when the intention is to **create a new** item of that model. The content (body) of the request **don't need to have all attributes** of that model but **must have at least one**. If an unknown attribute is provided (like a misspelled attribute name) it will throw an error of id **InvalidInput**.
+
+- **PATCH** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME/YOUR_MODEL_ID**. This endpoint must be used when the intention is to **update a existing** item of that model.  The content (body) of the request **don't need to have all attributes** of the ones that you want to update. If an unknown attribute is provided (like a misspelled attribute name) it will throw an error of id **InvalidInput**.
 
 
-- **POST** request to the address **https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME**. This endpoint must be used when the intention is to create a new item of that model. The request content must be a valid.
-
-- 
 
 ::: warning
 Have in mind that PistonAPI has a special **Model** called `users` that have some peculiarities. That will be covered on the next topic of the documentation.
