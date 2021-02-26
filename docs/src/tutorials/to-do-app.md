@@ -19,7 +19,7 @@ Only registered users will be able to create a `to-do-item`. And also, **User A*
 
 After you log in on your account at [pistonapi.com](https://pistonapi.com), click on **New Project** to create a new project for our tutorial. Choose a **Project Name** and click on **Create Project**. When choosing a project name have in mind that this name will go on the URL of your endpoints in the format of `https://api.pistonapi.com/<YOUR_PROJECT_NAME>`.
 
-<!-- ![A screenshot of the PistonAPI dashboard](./to-do-images/dashboard-new-project.png) -->
+![A screenshot of the PistonAPI dashboard](./to-do-images/dashboard-new-project.png) 
 
 ::: tip
 There are some constraints around the project name. It must be unique in the entire PistonAPI, must start with a letter, and contain only letters, numbers, hyphens, and underscores.
