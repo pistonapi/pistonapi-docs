@@ -134,7 +134,7 @@ If you do not inform a **Model Item ID** on the **GET** endpoint it will return 
 Have in mind that PistonAPI has a special **Model** called `users` that have some peculiarities. That will be covered on a specific topic of the documentation.
 :::
 
-## Users Model
+### Users Model
 
 Each project comes with a pre-existing model called `users`. This model is designed to manage the `users` of that project.
 
@@ -177,7 +177,7 @@ If the username and the password match with a previously registered user, it wil
 By default, when a new project is created the username and password that you use to log in on PistonAPI is automatically replicated on the user's model with the **Type** equal to `root`. So you are able to login into your own project.
 :::
 
-## Authentication
+### Authentication
 
 On each request to your project endpoints, you can use a header property called **authentication**. That property must be in the format of:
 
@@ -189,7 +189,7 @@ To obtain the authentication token you must do a **POST** request on the **AUTH*
 
 If you provide an invalid authentication token it will return an error with the ID Unauthorized. If the token is valid, the request will be considered Authenticated.
 
-## Permissions
+### Permissions
 
 Each endpoint has a configuration that is called **Permissions**. This configuration says on which conditions that endpoint can be called. 
 
@@ -199,19 +199,97 @@ The default configuration is **Root Only** to all endpoints. This is the most re
 
 **Public** is the most permissive permission option available. It will allow calls without any authentication at all. It doesn't require even the authorization property on the request header.
 
-## Pagination
-## Filters
-## Enforced Filters
-## Functions
+### Pagination
+
+The **GET** endpoint of a *Model* can be used to retrieve all available items in the PistonAPI databases. But it is impractical to return all data in a single request. So we have **Pagination**.
+
+**Pagination** will make the request return the data divided into pages. Only a limited number of items will be returned on each request, and to get all the items you must make a request to the next page and so on.
+
+On the response of the **GET** endpoint request you will see a property called pagination as bellow:
+
+```json
+  "pagination": {
+    "current": 1,
+    "total": 4
+  }
+}
+```
+This indicates the current page and the total number of pages. To request the next page (or any other) just append to the request URL the query parameter `?page=2` with the desired page number. An example of the final URL requesting the second page will be:
+
+**https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME?page=2**
+
+By default, PistonAPI will only show 10 items per page. But you can change that, up to 50 items, with another parameter to the URL. The parameter is **page_size**.  An example of the final URL requesting data with a page size of 50 is:
+
+**https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME?page_size=50**
+
+An example of the final URL requesting the second page data with the page size of 50 is:
+
+**https://api.pistonapi.com/YOUR_PROJECT_NAME/YOUR_MODEL_NAME?page_size=50&page=2**
+
+### Filters
+
+You can filter data retrieved by the **GET** endpoint through **Filters**. For example, let's say you want to retrieve only items which it **name** attribute is equals to **john** you can use  **?filter[name]=john** appended to the URL.
+
+The **Filters** works by adding some query parameters to the **GET** endpoint. The most simple way of using **Filters** is by equality. When you want to get data by specifying literally how the attribute value must be. The syntax is:
+
+```
+https://api.pistonapi.com/PROJECT_NAME/MODEL_NAME?filter[ATTRIBUTE_NAME]=ATTRIBUTE_VALUE
+```
+
+Of course, replacing the **PROJECT_NAME, MODEL_NAME, ATTRIBUTE_NAME, and ATTRIBUTE_VALUE** with the desired values. An example:
+
+**https://api.pistonapi.com/dope-party/dope-guests?filter[name]=john**
+
+It's possible to add **AND** conditions when you want to specify two or more conditions that all of them must be valid. Just concatenate the other filters with the keyword **&**. The syntax will be:
+
+```
+https://api.pistonapi.com/PROJECT_NAME/MODEL_NAME?filter[ATTRIBUTE_ONE_NAME]=ATTRIBUTE_ONE_VALUE&filter[ATTRIBUTE_TWO_NAME]=ATTRIBUTE_TWO_VALUE
+```
+
+An example:
+**https://api.pistonapi.com/dope-party/dope-guests?filter[name]=john&filter[age]=28&filter[location]=san_andreas**
+
+It's possible to add **OR** conditions when you want to specify two conditions that at least one of them must be valid. To do that just add **[OR]** before the attribute name of each statement. The syntax will be:
+
+```
+https://api.pistonapi.com/PROJECT_NAME/MODEL_NAME?filter[ATTRIBUTE_NAME]=POSSIBLE_VALUE&filter[OR][ATTRIBUTE_NAME]=OTHER_POSSIBLE_VALUE
+```
+
+An example: 
+**https://api.pistonapi.com/dope-party/dope-guests?filter[name]=john&filter[or][age]=28**
+
+It's possible to have **AND** conditions inside your **OR** conditions. To do that, just concatenate the condition. Add **[or]** if it is related to the second part of the **OR** condition.
+
+An example: 
+**https://api.pistonapi.com/dope-party/dope-guests?filter[name]=john&filter[age]=25&filter[or][name]=karl&filter[or][age]=28**
+
+That will be equivalent to searching for John 25 years old or for Karl 28 years old. 
+
+::: warning
+PistonAPI current does not support **OR** statements with three or more or conditions. For example, the name equals KARL or JOHN, or ELISHA. Let us know if your use case needs this type of feature.
+:::
+
+Beyond the equality comparison, you can also some other operators. To use these operators add the operator keyword after the attribute name. For example, the keyword for **greater than** is **gt**, so: **https://api.pistonapi.com/dope-party/dope-guests?filter[age][gt]=25** will filter for items that has the age greater than 25.
+
+Below  is a table with all operators that you can use, and with what type of attribute is compatible.
+
+| Operator| Keyword| String| Number|Datetime|Boolean|
+|-|-|-|-|-|-|
+|Greater Than| **gt** | ❌ | ✔️| ✔️|❌|
+|Greater Than or Equals| **gte** | ❌ | ✔️| ✔️|❌|
+|Lower Than| **lt** | ❌ | ✔️| ✔️|❌|
+|Lower Than or Equals| **lte** | ❌ | ✔️| ✔️|❌|
+|Not Equals| **ne** | ❌ | ✔️| ❌|❌|
+
+You can combine all operators e conditionals in an amazing search.
+
+::: tip
+If you don't find the operator that you need, let us know.
+:::
+
+### Enforced Filters
 
 
-# Using your APIs
-## User Project Authentication
-## Creating a new item
-## Getting existing items
-## Editing a existing item
-## Deleting a existing item
+### Functions
 
-# Other concepts
-## Regex Pattern
-## Limitations and Edge Cases
+
