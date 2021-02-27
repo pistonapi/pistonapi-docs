@@ -288,7 +288,15 @@ If you don't find the operator that you need, let us know.
 :::
 
 ### Enforced Filters
+The **Enforced Filters** is a feature used to restrict the items that can be manipulated on an endpoint. It can be applied to **every endpoint** except for the **POST endpoint**. Has the same syntax as a **Filter** but it's enforced before it tries to perform the desired action of that endpoint. It is a dashboard configuration, so the caller of the endpoint will not see it, or have the option of bypass it.
 
+For example, if you set an **Enforced Filters** of **filter[name]=john** to the **GET** endpoint, this endpoint will always retrieve only items that have the name equals to **john**, no matter which **Filter** the caller provide on the URL, it will always have to meet the condition of the **Enforced Filters** before applying the **Filter** provided on the URL.
+
+There is a special keyword that can be used on the **Enforced Filter** that is **$currentUser**. It that you have access to the authenticated user object (if there is an authenticated user) and will be able to create a more complex **Enforced Filter**. For example, **filter[name]=$currentUser.username** will only retrieve items that have the name equals to the authenticated user username that makes the call.
+
+**Enforced Filter** can also be used on the **PATCH** endpoint to restrict the items that can be modified by that endpoint. For example, **filter[status]=draft** will only allow items with the status equals to draft to be edited by the **PATCH** endpoint.
+
+The set an **Enforced Filter** go to PistonAPI dashboard, select the **Project** and the **Model**, and on the corresponding endpoint, click on the three dots, and then, on **Enforced Filter**.
 
 ### Functions
 
