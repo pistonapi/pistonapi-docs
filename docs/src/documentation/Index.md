@@ -300,5 +300,3 @@ There is a special keyword that can be used on the **Enforced Filter** that is *
 The set an **Enforced Filter** go to PistonAPI dashboard, select the **Project** and the **Model**, and on the corresponding endpoint, click on the three dots, and then, on **Enforced Filter**.
 
 ### Functions
-
-
