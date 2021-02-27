@@ -288,6 +288,7 @@ If you don't find the operator that you need, let us know.
 :::
 
 ### Enforced Filters
+
 The **Enforced Filters** is a feature used to restrict the items that can be manipulated on an endpoint. It can be applied to **every endpoint** except for the **POST endpoint**. Has the same syntax as a **Filter** but it's enforced before it tries to perform the desired action of that endpoint. It is a dashboard configuration, so the caller of the endpoint will not see it, or have the option of bypass it.
 
 For example, if you set an **Enforced Filters** of **filter[name]=john** to the **GET** endpoint, this endpoint will always retrieve only items that have the name equals to **john**, no matter which **Filter** the caller provide on the URL, it will always have to meet the condition of the **Enforced Filters** before applying the **Filter** provided on the URL.
