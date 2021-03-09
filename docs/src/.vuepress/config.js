@@ -44,16 +44,12 @@ module.exports = {
                 link: '/tutorials/'
             },
             {
-                text: 'Screencasts',
-                link: '/screencasts/'
-            },
-            {
                 text: 'Documentation',
                 link: '/documentation/',
             },
             {
-                text: 'Improve this on GitHub',
-                link: 'https://github.com/pistonapi/pistonapi-docs'
+                text: 'Go to PisonAPI',
+                link: 'https://www.pistonapi.com'
             }
         ],
         sidebar: {

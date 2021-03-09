@@ -3,28 +3,23 @@ home: true
 pageClass: custom-page-class
 
 tagline: Getting started with PistonAPI
-bottonline: Here you will find a lot of content about PistonAPI. Step by step tutorials, screencasts and documentation.
+bottonline: Explore all learning content about PistonAPI. Step by step tutorials and documentation.
 
 layout: DefaultLayout
 
 features:
-- title: Create an Waiting List feature
+- title: Tutorial on how to create an Waiting List feature
   details: Step by step tutorial in how to build a waiting list API
   icon: Terminal
   color: purple
   linkDestiny: 'tutorials/waiting-list.html#create-an-waiting-list-backend-feature'
 
-- title: Create an TO-DO app
+- title: Tutorial on how to create an TO-DO app
   details: Step by step tutorial in how to build a TO-DO App backend
   icon: Terminal
   color: purple
   linkDestiny: 'tutorials/to-do-app'
 
-- title: Watch Screencasts
-  details: Watch video series that cover core concepts of PistonAPI
-  icon: Video
-  color: indigo
-  linkDestiny: 'screencasts'
 
 - title: Read the Documentation
   details: Read all technical details of PistonAPI
