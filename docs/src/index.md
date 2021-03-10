@@ -5,8 +5,6 @@ pageClass: custom-page-class
 tagline: Getting started with PistonAPI
 bottonline: Explore all learning content about PistonAPI. Step by step tutorials and documentation.
 
-layout: DefaultLayout
-
 features:
 - title: Tutorial on how to create an Waiting List feature
   details: Step by step tutorial in how to build a waiting list API

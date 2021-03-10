@@ -9,7 +9,7 @@ module.exports = {
      * Ref：https://v1.vuepress.vuejs.org/config/#description
      */
     description: description,
-    
+
     postcss: {
         plugins: [
             require("tailwindcss")("./tailwind.config.js"),
@@ -68,7 +68,9 @@ module.exports = {
     /**
      * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
      */
-    plugins: {
-        'plausible': { domain: 'pistonapi.com' }
-    }
+    plugins: [
+        ['@vuepress/search', {
+            searchMaxSuggestions: 10
+        }]
+    ]
 }
